@@ -27,8 +27,7 @@ ORDER BY department
 
 -- Performance of people who have taken on a special project
 SELECT spec_proj_count,
--- round(AVG(perf_score), 0) Performance,
- perf_desc
+ round(AVG(perf_score), 0) Performance
 FROM staff
 WHERE spec_proj_count > 0
  AND terminated = false

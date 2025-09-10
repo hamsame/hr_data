@@ -1,44 +1,24 @@
 --Staff Demographics
 -- Employee count by sex
-WITH estaff AS (
-SELECT *
-FROM staff
-WHERE terminated = false
-)
-
 SELECT sex,
  count(*)
-FROM estaff
+FROM staff
+WHERE terminated = false
 GROUP BY sex
-UNION ALL
 
 
--- Employee count by race
-SELECT race,
- count(*)
-FROM estaff
-GROUP BY race
-UNION ALL
+-- Diversity by department
+SELECT department, COUNT (DISTINCT race) as distinct_races, count(*) total_dept_staff
+FROM staff
+WHERE terminated = false
+GROUP BY department
+ORDER BY distinct_races DESC
 
 
 --Employee count by citizenship
 SELECT citizenship,
- count(*)
-FROM estaff
+ count(*) citizenship_count
+FROM staff
+WHERE terminated = false
 GROUP BY citizenship
-UNION ALL
-
-
---Employee count by department
-SELECT department,
- count(*)
-FROM estaff
-GROUP BY department
-UNION ALL
-
-
---Employee count by job_title
-SELECT job_title,
- count(*)
-FROM estaff
-GROUP BY job_title
+ORDER BY citizenship_count DESC
