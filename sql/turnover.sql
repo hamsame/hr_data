@@ -18,11 +18,11 @@ ORDER BY job_title
 
 -- most common resignation reasons
 SELECT termination_reason reason,
- count(*) rc
+ count(*) reason_count
 FROM staff
 WHERE terminated and employment_status = 'Voluntarily Terminated'
 GROUP BY reason
-ORDER BY rc DESC
+ORDER BY reason_count DESC
 LIMIT 5
 
 
